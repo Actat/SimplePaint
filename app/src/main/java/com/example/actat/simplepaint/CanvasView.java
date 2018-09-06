@@ -15,28 +15,42 @@ import java.util.ArrayList;
 public class CanvasView extends View {
 
     private Paint paint;
-
     private ArrayList<Path> pathlist;
     private Path drawingPath;
-
-    public CanvasView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-
-        init_paint();
-    }
 
     public CanvasView(Context context) {
         super(context);
 
+        init_canvasview();
+    }
+
+    public CanvasView(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+
+        init_canvasview();
+    }
+
+    public CanvasView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+
+        init_canvasview();
+    }
+
+    void init_canvasview() {
         init_paint();
+        init_pathlist();
     }
 
     void init_paint() {
         paint = new Paint();
-        paint.setColor(Color.BLACK);
+        paint.setColor(Color.rgb(255, 0, 255 / 2));
         paint.setStyle(Paint.Style.STROKE);
         paint.setAntiAlias(true);
         paint.setStrokeWidth(5);
+    }
+
+    void init_pathlist() {
+        pathlist = new ArrayList<Path>();
     }
 
     @Override
